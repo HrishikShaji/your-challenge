@@ -1,17 +1,46 @@
 import { useUser } from "@/context/UserContext";
+import Image from "next/image";
 
 export const UserDisplayCard = () => {
-  const { user } = useUser();
-  if (!user)
-    return (
-      <div className="bg-neutral-200 rounded-3xl flex-grow flex flex-col gap-4 outline-dotted outline-black">
-        SELECT A USER
-      </div>
-    );
-  return (
-    <div className="bg-neutral-200 rounded-3xl flex-grow flex flex-col gap-4">
-      <h1>{user.name.first}</h1>
-      <h1>{user.email}</h1>
-    </div>
-  );
+	const { user } = useUser();
+	if (!user)
+		return (
+			<div className="bg-neutral-200 rounded-3xl  md:w-[70%] flex flex-col sm:flex-row items-center justify-center w-full sm:p-10 p-4 gap-4">
+				<div className="w-full h-52 flex justify-center items-center">
+					<h1 className="text-6xl font-semibold">SELECT A USER </h1>
+				</div>
+			</div>
+		);
+	return (
+		<div className="bg-neutral-200 rounded-3xl  md:w-[70%] flex flex-col sm:flex-row items-center w-full sm:p-10 p-4 gap-4">
+			<div className="w-80 h-52 sm:w-52 overflow-hidden">
+				<Image
+					className="h-full w-full rounded-3xl object-cover"
+					height={1000}
+					width={1000}
+					alt="image"
+					src={user.picture.large}
+				/>
+			</div>
+			<div className="flex flex-col w-80 sm:w-auto ">
+				<h1 className="sm:text-4xl text-xl mb-2  font-semibold text-orange-500  border-orange-500 border-b-4">
+					{user.name.title} {user.name.first} ${user.name.last}
+				</h1>
+				<h1 className="flex-nowrap">
+					<span>{user.location.street.number},</span>
+					<span>{user.location.street.name},</span>
+					<span className="block">{user.location.city},</span>
+					<span>{user.location.country},</span>
+					<span>{user.location.postcode}</span>
+				</h1>
+				<h1>
+					<span>{user.location.timezone.offset}</span> -
+					<span>{user.location.city}</span>,
+					<span className="underline">{user.location.state}</span>,
+					<span className="italic">{user.location.country}</span>
+				</h1>
+				<h1>{user.gender}</h1>
+			</div>
+		</div>
+	);
 };
