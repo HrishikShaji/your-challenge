@@ -14,3 +14,7 @@ export async function getUsers() {
 	const data = await response.json();
 	return data.results;
 }
+
+export function capitalize(word: string) {
+	return word.charAt(0).toUpperCase() + word.slice(1);
+}
