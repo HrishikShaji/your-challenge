@@ -1,5 +1,4 @@
 import { useUser } from "@/context/UserContext";
-import Image from "next/image";
 
 interface UserCardProps {
 	gender: string;
@@ -26,15 +25,17 @@ export const UserCard: React.FC<UserCardProps> = ({
 	return (
 		<div
 			onClick={() => handleClick(email)}
-			className="bg-orange-200  group overflow-hidden rounded-xl cursor-pointer  text-sm flex flex-col "
+			className="  group overflow-hidden rounded-xl cursor-pointer  text-sm flex flex-col "
 		>
-			<div className="bg-orange-400 px-4 group-hover:bg-blue-500 border-neutral-100 py-3  border-b-2">
-				<h1 className="text-md font-semibold">{fullName}</h1>
+			<div className="bg-neutral-200 px-4 group-hover:bg-purple-500 border-neutral-100 py-3  border-b-2">
+				<h1 className="text-md font-semibold group-hover:text-white">
+					{fullName}
+				</h1>
 			</div>
-			<div className="px-4 py-2 group-hover:bg-blue-200">
-				<h1>{gender} </h1>
-				<h1>{nationality}</h1>
-				<h1>{email}</h1>
+			<div className="px-4 py-2 bg-neutral-100 group-hover:bg-purple-400">
+				<h1 className="  group-hover:text-white ">{gender} </h1>
+				<h1 className="  group-hover:text-white ">{nationality}</h1>
+				<h1 className="text-orange-500 group-hover:text-white">{email}</h1>
 			</div>
 		</div>
 	);

@@ -12,7 +12,7 @@ export const UserDisplayCard = () => {
 			</div>
 		);
 	return (
-		<div className="bg-neutral-200 rounded-3xl  md:w-[70%] flex flex-col sm:flex-row items-center w-full sm:p-10 p-4 gap-4">
+		<div className="bg-neutral-200 rounded-3xl h-[500px] sm:h-auto  md:w-[70%] flex flex-col sm:flex-row items-center w-full sm:p-10 p-4 gap-4">
 			<div className="w-80 h-52 sm:w-52 overflow-hidden">
 				<Image
 					className="h-full w-full rounded-3xl object-cover"
@@ -30,16 +30,20 @@ export const UserDisplayCard = () => {
 					<span>{user.location.street.number},</span>
 					<span>{user.location.street.name},</span>
 					<span className="block">{user.location.city},</span>
-					<span>{user.location.country},</span>
+					<span className="font-semibold">{user.location.country},</span>
 					<span>{user.location.postcode}</span>
 				</h1>
 				<h1>
-					<span>{user.location.timezone.offset}</span> -
-					<span>{user.location.city}</span>,
-					<span className="underline">{user.location.state}</span>,
-					<span className="italic">{user.location.country}</span>
+					<span className="text-blue-500">
+						{user.location.timezone.offset}-
+					</span>
+					<span>{user.location.city},</span>
+					<span className="underline underline-offset-2">
+						{user.location.state},
+					</span>
+					<span>{user.location.country}</span>
 				</h1>
-				<h1>{user.gender}</h1>
+				<h1 className="text-gray-700">{user.gender}</h1>
 			</div>
 		</div>
 	);
